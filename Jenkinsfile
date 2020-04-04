@@ -1,5 +1,6 @@
 pipeline {
     agent none
+
     stages {
         stage('build gns3') {
             agent {
@@ -9,4 +10,5 @@ pipeline {
                 echo "Hello Worldd"
             }
         }
+    }
 }
