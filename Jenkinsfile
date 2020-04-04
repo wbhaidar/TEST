@@ -1,11 +1,12 @@
 pipeline {
-    agent any
+    agent none
     stages {
-        stage('build') {
+        stage('build gns3') {
+            agent {
+                docker { image 'hello-world'}
+            }
             steps {
                 echo "Hello Worldd"
             }
         }
-    }
-
 }
