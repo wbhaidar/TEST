@@ -6,9 +6,7 @@ pipeline {
             agent {
                 docker { image 'hello-world'}
             }
-            steps {
-                echo "Hello Worldd"
-            }
+            
         }
     }
 }
