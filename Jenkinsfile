@@ -9,6 +9,16 @@ pipeline {
     }
 
     stages {
+        stage ('intiial') {
+            steps {
+                sh 'whoami'
+            }
+        }
+        stage ('initial2') {
+            steps {
+                sh ' ls -al /'
+            }
+        }
         stage('build gns3') {
             steps {
                 sh 'ansible-playbook /taf/scripts/1_topology_setup.yml -i /taf/etc/1_3_hosts'
