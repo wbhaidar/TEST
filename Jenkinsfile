@@ -1,7 +1,8 @@
 pipeline {
     agent {
-        docker {
-            image 'node:7-alpine'
+        dockerfile {
+            dir 'UAT'
+            label 'taf'
         }
     }
 
@@ -9,7 +10,7 @@ pipeline {
     
         stage('build gns3') {
             steps {
-                sh ' node --version'
+                sh 'ls -al /'
             }
             
         }
