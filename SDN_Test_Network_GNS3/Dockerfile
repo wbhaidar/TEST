@@ -12,7 +12,7 @@ RUN apt-get update \
  && apt-get clean \
  && rm -rf /var/lib/apt/lists/*
 
-COPY gns3 /gns3
+COPY taf /taf
 ENV ANSIBLE_HOST_KEY_CHECKING false
 
 CMD ["/bin/bash"]
