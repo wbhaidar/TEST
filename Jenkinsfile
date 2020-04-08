@@ -2,7 +2,6 @@ pipeline {
     agent {
         dockerfile {
             dir 'UAT'
-            label 'taf'
         }
     }
 
