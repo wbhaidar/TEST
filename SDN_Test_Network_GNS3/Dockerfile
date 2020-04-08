@@ -15,4 +15,4 @@ RUN apt-get update \
 COPY taf /taf
 ENV ANSIBLE_HOST_KEY_CHECKING false
 
-CMD ["/bin/bash"]
+CMD ["/bin/sh"]
