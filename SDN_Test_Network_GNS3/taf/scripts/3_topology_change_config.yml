@@ -1,0 +1,35 @@
+
+- name: "MODIFY CONFIG PLAYBOOK"
+  hosts: ios1,ios2
+  gather_facts: no
+
+  # first task using ios_facts module
+  tasks:
+    - name: Modify Global Configuration
+      ios_config:
+           lines:
+              - no service pad
+              - no service tcp-small-servers
+              - no service udp-small-servers
+              - no service timestamps debug uptime
+              - no service timestamps log uptime
+              - service password-encryption
+              - username wal privilege 15 password 0 zxcvbn
+      register: out1
+
+    - name: Modify Specific COnfig for IOS1
+      ios_config:
+           parents: "interface Loopback0"
+           lines:
+              - description New_Desc_Loopback
+              - shutdown
+      register: out2
+      when: inventory_hostname == 'ios1' 
+
+    - name: Show Changes on IOS1 and IOS2
+      debug: 
+           var: out1
+
+    - name: Show Changes on IOS2
+      debug: 
+           var: out2

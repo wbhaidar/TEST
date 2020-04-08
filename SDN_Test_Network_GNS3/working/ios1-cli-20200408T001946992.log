@@ -1,0 +1,838 @@
+[2020-04-08 00:19:46,992] +++ ios1 logfile /tmp/ios1-cli-20200408T001946992.log +++
+[2020-04-08 00:19:46,992] +++ Unicon plugin ios +++
+Trying 192.168.56.111...
+
+[2020-04-08 00:19:46,999] +++ connection to spawn: telnet 192.168.56.111 23, id: 139953821193024 +++
+[2020-04-08 00:19:46,999] connection to ios1
+Connected to 192.168.56.111.
+Escape character is '^]'.
+
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************
+
+User Access Verification
+
+Username: admin
+Password: 
+
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************
+ios1#
+[2020-04-08 00:19:49,613] +++ initializing handle +++
+[2020-04-08 00:19:49,614] +++ ios1: executing command 'term length 0' +++
+term length 0
+ios1#
+[2020-04-08 00:19:49,749] +++ ios1: executing command 'term width 0' +++
+term width 0
+ios1#
+[2020-04-08 00:19:49,883] +++ ios1: executing command 'show version' +++
+show version
+Cisco IOS Software, IOSv Software (VIOS-ADVENTERPRISEK9-M), Version 15.7(3)M3, RELEASE SOFTWARE (fc2)
+Technical Support: http://www.cisco.com/techsupport
+Copyright (c) 1986-2018 by Cisco Systems, Inc.
+Compiled Wed 01-Aug-18 16:45 by prod_rel_team
+
+
+ROM: Bootstrap program is IOSv
+
+ios1 uptime is 7 minutes
+System returned to ROM by reload
+System image file is "flash0:/vios-adventerprisek9-m"
+Last reload reason: Unknown reason
+
+
+
+This product contains cryptographic features and is subject to United
+States and local country laws governing import, export, transfer and
+use. Delivery of Cisco cryptographic products does not imply
+third-party authority to import, export, distribute or use encryption.
+Importers, exporters, distributors and users are responsible for
+compliance with U.S. and local country laws. By using this product you
+agree to comply with applicable laws and regulations. If you are unable
+to comply with U.S. and local laws, return this product immediately.
+
+A summary of U.S. laws governing Cisco cryptographic products may be found at:
+http://www.cisco.com/wwl/export/crypto/tool/stqrg.html
+
+If you require further assistance please contact us by sending email to
+export@cisco.com.
+
+Cisco IOSv (revision 1.0) with  with 460017K/62464K bytes of memory.
+Processor board ID 99D0QWOZ00BMWNPYI144Z
+4 Gigabit Ethernet interfaces
+DRAM configuration is 72 bits wide with parity disabled.
+256K bytes of non-volatile configuration memory.
+2097152K bytes of ATA System CompactFlash 0 (Read/Write)
+0K bytes of ATA CompactFlash 1 (Read/Write)
+1024K bytes of ATA CompactFlash 2 (Read/Write)
+0K bytes of ATA CompactFlash 3 (Read/Write)
+
+
+
+Configuration register is 0x0
+
+ios1#
+[2020-04-08 00:19:50,031] +++ ios1: config +++
+config term
+Enter configuration commands, one per line.  End with CNTL/Z.
+ios1(config)#no logging console
+ios1(config)#line console 0
+ios1(config-line)#exec-timeout 0
+ios1(config-line)#end
+ios1#
+[2020-04-08 00:19:50,317] ios1 is already connected
+[2020-04-08 00:19:50,320] +++ ios1: executing command 'show vrf' +++
+show vrf
+ios1#
+[2020-04-08 00:19:50,434] +++ ios1: executing command 'show interfaces' +++
+show interfaces
+GigabitEthernet0/0 is up, line protocol is up 
+  Hardware is iGbE, address is 0c20.29b3.d800 (bia 0c20.29b3.d800)
+  Internet address is 10.0.0.1/24
+  MTU 1500 bytes, BW 1000000 Kbit/sec, DLY 10 usec, 
+     reliability 255/255, txload 1/255, rxload 1/255
+  Encapsulation ARPA, loopback not set
+  Keepalive set (10 sec)
+  Auto Duplex, Auto Speed, link type is auto, media type is RJ45
+  output flow-control is unsupported, input flow-control is unsupported
+  ARP type: ARPA, ARP Timeout 04:00:00
+  Last input 00:00:00, output 00:00:01, output hang never
+  Last clearing of "show interface" counters never
+  Input queue: 0/75/0/0 (size/max/drops/flushes); Total output drops: 0
+  Queueing strategy: fifo
+  Output queue: 0/40 (size/max)
+  5 minute input rate 1000 bits/sec, 1 packets/sec
+  5 minute output rate 1000 bits/sec, 1 packets/sec
+     26 packets input, 4548 bytes, 0 no buffer
+     Received 10 broadcasts (0 IP multicasts)
+     0 runts, 0 giants, 0 throttles 
+     0 input errors, 0 CRC, 0 frame, 0 overrun, 0 ignored
+     0 watchdog, 0 multicast, 0 pause input
+     46 packets output, 8254 bytes, 0 underruns
+     0 output errors, 0 collisions, 2 interface resets
+     0 unknown protocol drops
+     0 babbles, 0 late collision, 0 deferred
+     0 lost carrier, 0 no carrier, 0 pause output
+     0 output buffer failures, 0 output buffers swapped out
+GigabitEthernet0/1 is up, line protocol is up 
+  Hardware is iGbE, address is 0c20.29b3.d801 (bia 0c20.29b3.d801)
+  Internet address is 10.0.1.1/24
+  MTU 1500 bytes, BW 1000000 Kbit/sec, DLY 10 usec, 
+     reliability 255/255, txload 1/255, rxload 1/255
+  Encapsulation ARPA, loopback not set
+  Keepalive set (10 sec)
+  Auto Duplex, Auto Speed, link type is auto, media type is RJ45
+  output flow-control is unsupported, input flow-control is unsupported
+  ARP type: ARPA, ARP Timeout 04:00:00
+  Last input 00:00:01, output 00:00:00, output hang never
+  Last clearing of "show interface" counters never
+  Input queue: 0/75/0/0 (size/max/drops/flushes); Total output drops: 0
+  Queueing strategy: fifo
+  Output queue: 0/40 (size/max)
+  5 minute input rate 0 bits/sec, 0 packets/sec
+  5 minute output rate 0 bits/sec, 0 packets/sec
+     14 packets input, 3080 bytes, 0 no buffer
+     Received 10 broadcasts (0 IP multicasts)
+     0 runts, 0 giants, 0 throttles 
+     0 input errors, 0 CRC, 0 frame, 0 overrun, 0 ignored
+     0 watchdog, 0 multicast, 0 pause input
+     38 packets output, 7492 bytes, 0 underruns
+     0 output errors, 0 collisions, 2 interface resets
+     0 unknown protocol drops
+     0 babbles, 0 late collision, 0 deferred
+     1 lost carrier, 0 no carrier, 0 pause output
+     0 output buffer failures, 0 output buffers swapped out
+GigabitEthernet0/2 is administratively down, line protocol is down 
+  Hardware is iGbE, address is 0c20.29b3.d802 (bia 0c20.29b3.d802)
+  MTU 1500 bytes, BW 1000000 Kbit/sec, DLY 10 usec, 
+     reliability 255/255, txload 1/255, rxload 1/255
+  Encapsulation ARPA, loopback not set
+  Keepalive set (10 sec)
+  Auto Duplex, Auto Speed, link type is auto, media type is RJ45
+  output flow-control is unsupported, input flow-control is unsupported
+  ARP type: ARPA, ARP Timeout 04:00:00
+  Last input never, output never, output hang never
+  Last clearing of "show interface" counters never
+  Input queue: 0/75/0/0 (size/max/drops/flushes); Total output drops: 0
+  Queueing strategy: fifo
+  Output queue: 0/40 (size/max)
+  5 minute input rate 0 bits/sec, 0 packets/sec
+  5 minute output rate 0 bits/sec, 0 packets/sec
+     0 packets input, 0 bytes, 0 no buffer
+     Received 0 broadcasts (0 IP multicasts)
+     0 runts, 0 giants, 0 throttles 
+     0 input errors, 0 CRC, 0 frame, 0 overrun, 0 ignored
+     0 watchdog, 0 multicast, 0 pause input
+     0 packets output, 0 bytes, 0 underruns
+     0 output errors, 0 collisions, 1 interface resets
+     0 unknown protocol drops
+     0 babbles, 0 late collision, 0 deferred
+     1 lost carrier, 0 no carrier, 0 pause output
+     0 output buffer failures, 0 output buffers swapped out
+GigabitEthernet0/3 is up, line protocol is up 
+  Hardware is iGbE, address is 0c20.29b3.d803 (bia 0c20.29b3.d803)
+  Internet address is 192.168.56.111/24
+  MTU 1500 bytes, BW 1000000 Kbit/sec, DLY 10 usec, 
+     reliability 255/255, txload 1/255, rxload 1/255
+  Encapsulation ARPA, loopback not set
+  Keepalive set (10 sec)
+  Auto Duplex, Auto Speed, link type is auto, media type is RJ45
+  output flow-control is unsupported, input flow-control is unsupported
+  ARP type: ARPA, ARP Timeout 04:00:00
+  Last input 00:00:00, output 00:00:00, output hang never
+  Last clearing of "show interface" counters never
+  Input queue: 1/75/0/0 (size/max/drops/flushes); Total output drops: 0
+  Queueing strategy: fifo
+  Output queue: 0/40 (size/max)
+  5 minute input rate 0 bits/sec, 0 packets/sec
+  5 minute output rate 0 bits/sec, 0 packets/sec
+     127 packets input, 10488 bytes, 0 no buffer
+     Received 26 broadcasts (0 IP multicasts)
+     1 runts, 0 giants, 0 throttles 
+     1 input errors, 0 CRC, 0 frame, 0 overrun, 0 ignored
+     0 watchdog, 0 multicast, 0 pause input
+     189 packets output, 19393 bytes, 0 underruns
+     0 output errors, 0 collisions, 2 interface resets
+     0 unknown protocol drops
+     0 babbles, 0 late collision, 0 deferred
+     1 lost carrier, 0 no carrier, 0 pause output
+     0 output buffer failures, 0 output buffers swapped out
+Loopback0 is up, line protocol is up 
+  Hardware is Loopback
+  Internet address is 1.1.1.1/32
+  MTU 1514 bytes, BW 8000000 Kbit/sec, DLY 5000 usec, 
+     reliability 255/255, txload 1/255, rxload 1/255
+  Encapsulation LOOPBACK, loopback not set
+  Keepalive set (10 sec)
+  Last input never, output never, output hang never
+  Last clearing of "show interface" counters never
+  Input queue: 0/75/0/0 (size/max/drops/flushes); Total output drops: 0
+  Queueing strategy: fifo
+  Output queue: 0/0 (size/max)
+  5 minute input rate 0 bits/sec, 0 packets/sec
+  5 minute output rate 0 bits/sec, 0 packets/sec
+     0 packets input, 0 bytes, 0 no buffer
+     Received 0 broadcasts (0 IP multicasts)
+     0 runts, 0 giants, 0 throttles 
+     0 input errors, 0 CRC, 0 frame, 0 overrun, 0 ignored, 0 abort
+     0 packets output, 0 bytes, 0 underruns
+     0 output errors, 0 collisions, 0 interface resets
+     0 unknown protocol drops
+     0 output buffer failures, 0 output buffers swapped out
+ios1#
+[2020-04-08 00:19:50,626] +++ ios1: executing command 'show interfaces accounting' +++
+show interfaces accounting
+GigabitEthernet0/0 
+                Protocol    Pkts In   Chars In   Pkts Out  Chars Out
+                   Other          0          0          6        360
+                      IP         16       1564         23       4490
+                     ARP          2        120          9        540
+                     CDP          8       2864          8       2864
+GigabitEthernet0/1 
+                Protocol    Pkts In   Chars In   Pkts Out  Chars Out
+                   Other          0          0          5        300
+                      IP          5        454         16       3788
+                     ARP          1         60          9        540
+                     CDP          7       2506          8       2864
+Interface GigabitEthernet0/2 is disabled
+
+GigabitEthernet0/3 
+                Protocol    Pkts In   Chars In   Pkts Out  Chars Out
+                   Other          0          0          6        360
+                      IP        136       8368        205      24403
+                     ARP          1         60          9        540
+                     CDP          8       2864          8       2864
+Loopback0 
+                Protocol    Pkts In   Chars In   Pkts Out  Chars Out
+No traffic sent or received on this interface.
+ios1#
+[2020-04-08 00:19:50,809] +++ ios1: executing command 'show ip interface' +++
+show ip interface
+GigabitEthernet0/0 is up, line protocol is up
+  Internet address is 10.0.0.1/24
+  Broadcast address is 255.255.255.255
+  Address determined by setup command
+  MTU is 1500 bytes
+  Helper address is not set
+  Directed broadcast forwarding is disabled
+  Multicast reserved groups joined: 224.0.0.5 224.0.0.6
+  Outgoing access list is not set
+  Inbound  access list is not set
+  Proxy ARP is enabled
+  Local Proxy ARP is disabled
+  Security level is default
+  Split horizon is enabled
+  ICMP redirects are always sent
+  ICMP unreachables are always sent
+  ICMP mask replies are never sent
+  IP fast switching is enabled
+  IP fast switching on the same interface is disabled
+  IP Flow switching is disabled
+  IP CEF switching is enabled
+  IP CEF switching turbo vector
+  IP multicast fast switching is enabled
+  IP multicast distributed fast switching is disabled
+  IP route-cache flags are Fast, CEF
+  Router Discovery is disabled
+  IP output packet accounting is disabled
+  IP access violation accounting is disabled
+  TCP/IP header compression is disabled
+  RTP/IP header compression is disabled
+  Policy routing is disabled
+  Network address translation is disabled
+  BGP Policy Mapping is disabled
+  Input features: MCI Check
+  IPv4 WCCP Redirect outbound is disabled
+  IPv4 WCCP Redirect inbound is disabled
+  IPv4 WCCP Redirect exclude is disabled
+GigabitEthernet0/1 is up, line protocol is up
+  Internet address is 10.0.1.1/24
+  Broadcast address is 255.255.255.255
+  Address determined by setup command
+  MTU is 1500 bytes
+  Helper address is not set
+  Directed broadcast forwarding is disabled
+  Multicast reserved groups joined: 224.0.0.5
+  Outgoing access list is not set
+  Inbound  access list is not set
+  Proxy ARP is enabled
+  Local Proxy ARP is disabled
+  Security level is default
+  Split horizon is enabled
+  ICMP redirects are always sent
+  ICMP unreachables are always sent
+  ICMP mask replies are never sent
+  IP fast switching is enabled
+  IP fast switching on the same interface is disabled
+  IP Flow switching is disabled
+  IP CEF switching is enabled
+  IP CEF switching turbo vector
+  IP multicast fast switching is enabled
+  IP multicast distributed fast switching is disabled
+  IP route-cache flags are Fast, CEF
+  Router Discovery is disabled
+  IP output packet accounting is disabled
+  IP access violation accounting is disabled
+  TCP/IP header compression is disabled
+  RTP/IP header compression is disabled
+  Policy routing is disabled
+  Network address translation is disabled
+  BGP Policy Mapping is disabled
+  Input features: MCI Check
+  IPv4 WCCP Redirect outbound is disabled
+  IPv4 WCCP Redirect inbound is disabled
+  IPv4 WCCP Redirect exclude is disabled
+GigabitEthernet0/2 is administratively down, line protocol is down
+  Internet protocol processing disabled
+GigabitEthernet0/3 is up, line protocol is up
+  Internet address is 192.168.56.111/24
+  Broadcast address is 255.255.255.255
+  Address determined by setup command
+  MTU is 1500 bytes
+  Helper address is not set
+  Directed broadcast forwarding is disabled
+  Outgoing access list is not set
+  Inbound  access list is not set
+  Proxy ARP is enabled
+  Local Proxy ARP is disabled
+  Security level is default
+  Split horizon is enabled
+  ICMP redirects are always sent
+  ICMP unreachables are always sent
+  ICMP mask replies are never sent
+  IP fast switching is enabled
+  IP fast switching on the same interface is disabled
+  IP Flow switching is disabled
+  IP CEF switching is enabled
+  IP CEF switching turbo vector
+  IP multicast fast switching is enabled
+  IP multicast distributed fast switching is disabled
+  IP route-cache flags are Fast, CEF
+  Router Discovery is disabled
+  IP output packet accounting is disabled
+  IP access violation accounting is disabled
+  TCP/IP header compression is disabled
+  RTP/IP header compression is disabled
+  Policy routing is disabled
+  Network address translation is disabled
+  BGP Policy Mapping is disabled
+  Input features: MCI Check
+  IPv4 WCCP Redirect outbound is disabled
+  IPv4 WCCP Redirect inbound is disabled
+  IPv4 WCCP Redirect exclude is disabled
+Loopback0 is up, line protocol is up
+  Internet address is 1.1.1.1/32
+  Broadcast address is 255.255.255.255
+  Address determined by setup command
+  MTU is 1514 bytes
+  Helper address is not set
+  Directed broadcast forwarding is disabled
+  Multicast reserved groups joined: 224.0.0.5
+  Outgoing access list is not set
+  Inbound  access list is not set
+  Proxy ARP is enabled
+  Local Proxy ARP is disabled
+  Security level is default
+  Split horizon is enabled
+  ICMP redirects are always sent
+  ICMP unreachables are always sent
+  ICMP mask replies are never sent
+  IP fast switching is enabled
+  IP fast switching on the same interface is disabled
+  IP Flow switching is disabled
+  IP CEF switching is enabled
+  IP CEF switching turbo vector
+  IP Null turbo vector
+  IP multicast fast switching is enabled
+  IP multicast distributed fast switching is disabled
+  IP route-cache flags are Fast, CEF
+  Router Discovery is disabled
+  IP output packet accounting is disabled
+  IP access violation accounting is disabled
+  TCP/IP header compression is disabled
+  RTP/IP header compression is disabled
+  Policy routing is disabled
+  Network address translation is disabled
+  BGP Policy Mapping is disabled
+  Input features: MCI Check
+  IPv4 WCCP Redirect outbound is disabled
+  IPv4 WCCP Redirect inbound is disabled
+  IPv4 WCCP Redirect exclude is disabled
+ios1#
+[2020-04-08 00:19:50,995] +++ ios1: executing command 'show ipv6 interface' +++
+show ipv6 interface
+ios1#
+[2020-04-08 00:19:54,120] +++ ios1: executing command 'show ip ospf' +++
+show ip ospf
+ Routing Process "ospf 1" with ID 192.168.56.111
+ Start time: 00:06:17.385, Time elapsed: 00:00:55.274
+ Supports only single TOS(TOS0) routes
+ Supports opaque LSA
+ Supports Link-local Signaling (LLS)
+ Supports area transit capability
+ Supports NSSA (compatible with RFC 3101)
+ Supports Database Exchange Summary List Optimization (RFC 5243)
+ Event-log enabled, Maximum number of events: 1000, Mode: cyclic
+ Router is not originating router-LSAs with maximum metric
+ Initial SPF schedule delay 5000 msecs
+ Minimum hold time between two consecutive SPFs 10000 msecs
+ Maximum wait time between two consecutive SPFs 10000 msecs
+ Incremental-SPF disabled
+ Minimum LSA interval 5 secs
+ Minimum LSA arrival 1000 msecs
+ LSA group pacing timer 240 secs
+ Interface flood pacing timer 33 msecs
+ Retransmission pacing timer 66 msecs
+ EXCHANGE/LOADING adjacency limit: initial 300, process maximum 300
+ Number of external LSA 0. Checksum Sum 0x000000
+ Number of opaque AS LSA 0. Checksum Sum 0x000000
+ Number of DCbitless external and opaque AS LSA 0
+ Number of DoNotAge external and opaque AS LSA 0
+ Number of areas in this router is 1. 1 normal 0 stub 0 nssa
+ Number of areas transit capable is 0
+ External flood list length 0
+ IETF NSF helper support enabled
+ Cisco NSF helper support enabled
+ Reference bandwidth unit is 100 mbps
+    Area BACKBONE(0)
+        Number of interfaces in this area is 3 (1 loopback)
+	Area has no authentication
+	SPF algorithm last executed 00:00:08.216 ago
+	SPF algorithm executed 4 times
+	Area ranges are
+	Number of LSA 4. Checksum Sum 0x02A7C5
+	Number of opaque link LSA 0. Checksum Sum 0x000000
+	Number of DCbitless LSA 0
+	Number of indication LSA 0
+	Number of DoNotAge LSA 0
+	Flood list length 0
+
+ios1#
+[2020-04-08 00:19:54,277] +++ ios1: executing command 'show ip protocols' +++
+show ip protocols
+*** IP Routing is NSF aware ***
+
+Routing Protocol is "application"
+  Sending updates every 0 seconds
+  Invalid after 0 seconds, hold down 0, flushed after 0
+  Outgoing update filter list for all interfaces is not set
+  Incoming update filter list for all interfaces is not set
+  Maximum path: 32
+  Routing for Networks:
+  Routing Information Sources:
+    Gateway         Distance      Last Update
+  Distance: (default is 4)
+
+Routing Protocol is "ospf 1"
+  Outgoing update filter list for all interfaces is not set
+  Incoming update filter list for all interfaces is not set
+  Router ID 192.168.56.111
+  Number of areas in this router is 1. 1 normal 0 stub 0 nssa
+  Maximum path: 4
+  Routing for Networks:
+  Routing on Interfaces Configured Explicitly (Area 0):
+    Loopback0
+    GigabitEthernet0/1
+    GigabitEthernet0/0
+  Routing Information Sources:
+    Gateway         Distance      Last Update
+    192.168.56.112       110      00:00:08
+  Distance: (default is 110)
+
+ios1#
+[2020-04-08 00:19:54,446] +++ ios1: executing command 'show running-config | section router ospf 1' +++
+show running-config | section router ospf 1
+router ospf 1
+ router-id 1.1.1.1
+ios1#
+[2020-04-08 00:19:57,349] +++ ios1: executing command 'show ip ospf mpls ldp interface' +++
+show ip ospf mpls ldp interface
+Loopback0
+  Process ID 1, Area 0
+  LDP is not configured through LDP autoconfig
+  LDP-IGP Synchronization : Not required
+  Holddown timer is disabled
+  Interface is up 
+GigabitEthernet0/1
+  Process ID 1, Area 0
+  LDP is not configured through LDP autoconfig
+  LDP-IGP Synchronization : Not required
+  Holddown timer is disabled
+  Interface is up 
+GigabitEthernet0/0
+  Process ID 1, Area 0
+  LDP is not configured through LDP autoconfig
+  LDP-IGP Synchronization : Not required
+  Holddown timer is disabled
+  Interface is up 
+ios1#
+[2020-04-08 00:19:57,561] +++ ios1: executing command 'show ip ospf mpls traffic-eng link' +++
+show ip ospf mpls traffic-eng link
+
+            OSPF Router with ID (192.168.56.111) (Process ID 1)
+
+  Area 0 MPLS TE not initialized
+ios1#
+[2020-04-08 00:19:57,785] +++ ios1: executing command 'show running-config | section router ospf 1' +++
+show running-config | section router ospf 1
+router ospf 1
+ router-id 1.1.1.1
+ios1#
+[2020-04-08 00:20:00,687] +++ ios1: executing command 'show ip ospf database router' +++
+show ip ospf database router
+
+            OSPF Router with ID (192.168.56.111) (Process ID 1)
+
+		Router Link States (Area 0)
+
+  LS age: 4
+  Options: (No TOS-capability, DC)
+  LS Type: Router Links
+  Link State ID: 192.168.56.111
+  Advertising Router: 192.168.56.111
+  LS Seq Number: 80000008
+  Checksum: 0x8A2A
+  Length: 60
+  Number of Links: 3
+
+    Link connected to: a Stub Network
+     (Link ID) Network/subnet number: 1.1.1.1
+     (Link Data) Network Mask: 255.255.255.255
+      Number of MTID metrics: 0
+       TOS 0 Metrics: 1
+
+    Link connected to: a Transit Network
+     (Link ID) Designated Router address: 10.0.1.2
+     (Link Data) Router Interface address: 10.0.1.1
+      Number of MTID metrics: 0
+       TOS 0 Metrics: 1
+
+    Link connected to: a Transit Network
+     (Link ID) Designated Router address: 10.0.0.2
+     (Link Data) Router Interface address: 10.0.0.1
+      Number of MTID metrics: 0
+       TOS 0 Metrics: 1
+
+
+  LS age: 2
+  Options: (No TOS-capability, DC)
+  LS Type: Router Links
+  Link State ID: 192.168.56.112
+  Advertising Router: 192.168.56.112
+  LS Seq Number: 80000009
+  Checksum: 0xDAD0
+  Length: 60
+  Number of Links: 3
+
+    Link connected to: a Stub Network
+     (Link ID) Network/subnet number: 2.2.2.2
+     (Link Data) Network Mask: 255.255.255.255
+      Number of MTID metrics: 0
+       TOS 0 Metrics: 1
+
+    Link connected to: a Transit Network
+     (Link ID) Designated Router address: 10.0.1.2
+     (Link Data) Router Interface address: 10.0.1.2
+      Number of MTID metrics: 0
+       TOS 0 Metrics: 1
+
+    Link connected to: a Transit Network
+     (Link ID) Designated Router address: 10.0.0.2
+     (Link Data) Router Interface address: 10.0.0.2
+      Number of MTID metrics: 0
+       TOS 0 Metrics: 1
+
+
+ios1#
+[2020-04-08 00:20:01,101] +++ ios1: executing command 'show ip ospf database network' +++
+show ip ospf database network
+
+            OSPF Router with ID (192.168.56.111) (Process ID 1)
+
+		Net Link States (Area 0)
+
+  LS age: 17
+  Options: (No TOS-capability, DC)
+  LS Type: Network Links
+  Link State ID: 10.0.0.2 (address of Designated Router)
+  Advertising Router: 192.168.56.112
+  LS Seq Number: 80000001
+  Checksum: 0xDC1C
+  Length: 32
+  Network Mask: /24
+	Attached Router: 192.168.56.112
+	Attached Router: 192.168.56.111
+
+  LS age: 8
+  Options: (No TOS-capability, DC)
+  LS Type: Network Links
+  Link State ID: 10.0.1.2 (address of Designated Router)
+  Advertising Router: 192.168.56.112
+  LS Seq Number: 80000001
+  Checksum: 0xD126
+  Length: 32
+  Network Mask: /24
+	Attached Router: 192.168.56.112
+	Attached Router: 192.168.56.111
+
+ios1#
+[2020-04-08 00:20:01,320] +++ ios1: executing command 'show ip ospf database external' +++
+show ip ospf database external
+
+            OSPF Router with ID (192.168.56.111) (Process ID 1)
+ios1#
+[2020-04-08 00:20:01,541] +++ ios1: executing command 'show ip ospf database summary' +++
+show ip ospf database summary
+
+            OSPF Router with ID (192.168.56.111) (Process ID 1)
+ios1#
+[2020-04-08 00:20:01,774] +++ ios1: executing command 'show ip ospf database opaque-area' +++
+show ip ospf database opaque-area
+
+            OSPF Router with ID (192.168.56.111) (Process ID 1)
+ios1#
+[2020-04-08 00:20:01,999] +++ ios1: executing command 'show ip ospf virtual-links' +++
+show ip ospf virtual-links
+ios1#
+[2020-04-08 00:20:02,205] +++ ios1: executing command 'show ip ospf interface' +++
+show ip ospf interface
+Loopback0 is up, line protocol is up 
+  Internet Address 1.1.1.1/32, Area 0, Attached via Interface Enable
+  Process ID 1, Router ID 192.168.56.111, Network Type LOOPBACK, Cost: 1
+  Topology-MTID    Cost    Disabled    Shutdown      Topology Name
+        0           1         no          no            Base
+  Enabled by interface config, including secondary ip addresses
+  Loopback interface is treated as a stub Host
+GigabitEthernet0/1 is up, line protocol is up 
+  Internet Address 10.0.1.1/24, Area 0, Attached via Interface Enable
+  Process ID 1, Router ID 192.168.56.111, Network Type BROADCAST, Cost: 1
+  Topology-MTID    Cost    Disabled    Shutdown      Topology Name
+        0           1         no          no            Base
+  Enabled by interface config, including secondary ip addresses
+  Transmit Delay is 1 sec, State BDR, Priority 1
+  Designated Router (ID) 192.168.56.112, Interface address 10.0.1.2
+  Backup Designated router (ID) 192.168.56.111, Interface address 10.0.1.1
+  Timer intervals configured, Hello 10, Dead 40, Wait 40, Retransmit 5
+    oob-resync timeout 40
+    Hello due in 00:00:03
+  Supports Link-local Signaling (LLS)
+  Cisco NSF helper support enabled
+  IETF NSF helper support enabled
+  Index 1/2/2, flood queue length 0
+  Next 0x0(0)/0x0(0)/0x0(0)
+  Last flood scan length is 1, maximum is 1
+  Last flood scan time is 0 msec, maximum is 0 msec
+  Neighbor Count is 1, Adjacent neighbor count is 1 
+    Adjacent with neighbor 192.168.56.112  (Designated Router)
+  Suppress hello for 0 neighbor(s)
+GigabitEthernet0/0 is up, line protocol is up 
+  Internet Address 10.0.0.1/24, Area 0, Attached via Interface Enable
+  Process ID 1, Router ID 192.168.56.111, Network Type BROADCAST, Cost: 1
+  Topology-MTID    Cost    Disabled    Shutdown      Topology Name
+        0           1         no          no            Base
+  Enabled by interface config, including secondary ip addresses
+  Transmit Delay is 1 sec, State BDR, Priority 1
+  Designated Router (ID) 192.168.56.112, Interface address 10.0.0.2
+  Backup Designated router (ID) 192.168.56.111, Interface address 10.0.0.1
+  Timer intervals configured, Hello 10, Dead 40, Wait 40, Retransmit 5
+    oob-resync timeout 40
+    Hello due in 00:00:04
+  Supports Link-local Signaling (LLS)
+  Cisco NSF helper support enabled
+  IETF NSF helper support enabled
+  Index 1/1/1, flood queue length 0
+  Next 0x0(0)/0x0(0)/0x0(0)
+  Last flood scan length is 1, maximum is 1
+  Last flood scan time is 1 msec, maximum is 1 msec
+  Neighbor Count is 1, Adjacent neighbor count is 1 
+    Adjacent with neighbor 192.168.56.112  (Designated Router)
+  Suppress hello for 0 neighbor(s)
+ios1#
+[2020-04-08 00:20:02,401] +++ ios1: executing command 'show running-config | section router ospf 1' +++
+show running-config | section router ospf 1
+router ospf 1
+ router-id 1.1.1.1
+ios1#
+[2020-04-08 00:20:05,356] +++ ios1: executing command 'show running-config | section router ospf 1' +++
+show running-config | section router ospf 1
+router ospf 1
+ router-id 1.1.1.1
+ios1#
+[2020-04-08 00:20:08,366] +++ ios1: executing command 'show running-config | section router ospf 1' +++
+show running-config | section router ospf 1
+router ospf 1
+ router-id 1.1.1.1
+ios1#
+[2020-04-08 00:20:11,432] +++ ios1: executing command 'show ip ospf neighbor detail' +++
+show ip ospf neighbor detail
+ Neighbor 192.168.56.112, interface address 10.0.1.2
+    In the area 0 via interface GigabitEthernet0/1
+    Neighbor priority is 1, State is FULL, 6 state changes
+    DR is 10.0.1.2 BDR is 10.0.1.1
+    Options is 0x12 in Hello (E-bit, L-bit)
+    Options is 0x52 in DBD (E-bit, L-bit, O-bit)
+    LLS Options is 0x1 (LR)
+    Dead timer due in 00:00:34
+    Neighbor is up for 00:00:52
+    Index 1/2/2, retransmission queue length 0, number of retransmission 0
+    First 0x0(0)/0x0(0)/0x0(0) Next 0x0(0)/0x0(0)/0x0(0)
+    Last retransmission scan length is 0, maximum is 0
+    Last retransmission scan time is 0 msec, maximum is 0 msec
+ Neighbor 192.168.56.112, interface address 10.0.0.2
+    In the area 0 via interface GigabitEthernet0/0
+    Neighbor priority is 1, State is FULL, 6 state changes
+    DR is 10.0.0.2 BDR is 10.0.0.1
+    Options is 0x12 in Hello (E-bit, L-bit)
+    Options is 0x52 in DBD (E-bit, L-bit, O-bit)
+    LLS Options is 0x1 (LR)
+    Dead timer due in 00:00:34
+    Neighbor is up for 00:01:01
+    Index 1/1/1, retransmission queue length 0, number of retransmission 0
+    First 0x0(0)/0x0(0)/0x0(0) Next 0x0(0)/0x0(0)/0x0(0)
+    Last retransmission scan length is 0, maximum is 0
+    Last retransmission scan time is 0 msec, maximum is 0 msec
+ios1#
+[2020-04-08 00:20:11,697] +++ ios1: executing command 'show ip ospf interface | section GigabitEthernet0/1' +++
+show ip ospf interface | section GigabitEthernet0/1
+GigabitEthernet0/1 is up, line protocol is up 
+  Internet Address 10.0.1.1/24, Area 0, Attached via Interface Enable
+  Process ID 1, Router ID 192.168.56.111, Network Type BROADCAST, Cost: 1
+  Topology-MTID    Cost    Disabled    Shutdown      Topology Name
+        0           1         no          no            Base
+  Enabled by interface config, including secondary ip addresses
+  Transmit Delay is 1 sec, State BDR, Priority 1
+  Designated Router (ID) 192.168.56.112, Interface address 10.0.1.2
+  Backup Designated router (ID) 192.168.56.111, Interface address 10.0.1.1
+  Timer intervals configured, Hello 10, Dead 40, Wait 40, Retransmit 5
+    oob-resync timeout 40
+    Hello due in 00:00:03
+  Supports Link-local Signaling (LLS)
+  Cisco NSF helper support enabled
+  IETF NSF helper support enabled
+  Index 1/2/2, flood queue length 0
+  Next 0x0(0)/0x0(0)/0x0(0)
+  Last flood scan length is 1, maximum is 1
+  Last flood scan time is 0 msec, maximum is 0 msec
+  Neighbor Count is 1, Adjacent neighbor count is 1 
+    Adjacent with neighbor 192.168.56.112  (Designated Router)
+  Suppress hello for 0 neighbor(s)
+ios1#
+[2020-04-08 00:20:12,053] +++ ios1: executing command 'show running-config | section router ospf 1' +++
+show running-config | section router ospf 1
+router ospf 1
+ router-id 1.1.1.1
+ios1#
+[2020-04-08 00:20:14,979] +++ ios1: executing command 'show ip ospf interface | section GigabitEthernet0/0' +++
+show ip ospf interface | section GigabitEthernet0/0
+GigabitEthernet0/0 is up, line protocol is up 
+  Internet Address 10.0.0.1/24, Area 0, Attached via Interface Enable
+  Process ID 1, Router ID 192.168.56.111, Network Type BROADCAST, Cost: 1
+  Topology-MTID    Cost    Disabled    Shutdown      Topology Name
+        0           1         no          no            Base
+  Enabled by interface config, including secondary ip addresses
+  Transmit Delay is 1 sec, State BDR, Priority 1
+  Designated Router (ID) 192.168.56.112, Interface address 10.0.0.2
+  Backup Designated router (ID) 192.168.56.111, Interface address 10.0.0.1
+  Timer intervals configured, Hello 10, Dead 40, Wait 40, Retransmit 5
+    oob-resync timeout 40
+    Hello due in 00:00:01
+  Supports Link-local Signaling (LLS)
+  Cisco NSF helper support enabled
+  IETF NSF helper support enabled
+  Index 1/1/1, flood queue length 0
+  Next 0x0(0)/0x0(0)/0x0(0)
+  Last flood scan length is 1, maximum is 1
+  Last flood scan time is 1 msec, maximum is 1 msec
+  Neighbor Count is 1, Adjacent neighbor count is 1 
+    Adjacent with neighbor 192.168.56.112  (Designated Router)
+  Suppress hello for 0 neighbor(s)
+ios1#
+[2020-04-08 00:20:15,296] +++ ios1: executing command 'show running-config | section router ospf 1' +++
+show running-config | section router ospf 1
+router ospf 1
+ router-id 1.1.1.1
+ios1#
+[2020-04-08 00:20:18,176] +++ ios1: executing command 'show ip ospf sham-links' +++
+show ip ospf sham-links
+ios1#
+[2020-04-08 00:20:18,432] ios1 is already connected
+[2020-04-08 00:20:18,433] +++ ios1: executing command 'ping ip 2.2.2.2 repeat 3 timeout 1' +++
+ping ip 2.2.2.2 repeat 3 timeout 1
+Type escape sequence to abort.
+Sending 3, 100-byte ICMP Echos to 2.2.2.2, timeout is 1 seconds:
+!!!
+Success rate is 100 percent (3/3), round-trip min/avg/max = 3/5/8 ms
+ios1#
+[2020-04-08 00:20:18,719] +++ ios1: executing command 'ping ip 10.0.0.2 repeat 3 timeout 1' +++
+ping ip 10.0.0.2 repeat 3 timeout 1
+Type escape sequence to abort.
+Sending 3, 100-byte ICMP Echos to 10.0.0.2, timeout is 1 seconds:
+!!!
+Success rate is 100 percent (3/3), round-trip min/avg/max = 5/6/8 ms
+ios1#
+[2020-04-08 00:20:18,996] +++ ios1: executing command 'ping ip 10.0.1.2 repeat 3 timeout 1' +++
+ping ip 10.0.1.2 repeat 3 timeout 1
+Type escape sequence to abort.
+Sending 3, 100-byte ICMP Echos to 10.0.1.2, timeout is 1 seconds:
+!!!
+Success rate is 100 percent (3/3), round-trip min/avg/max = 4/4/5 ms
+ios1#
+[2020-04-08 00:20:19,266] +++ ios1: executing command 'ping ip 10.0.1.2 repeat 3 timeout 1' +++
+ping ip 10.0.1.2 repeat 3 timeout 1
+Type escape sequence to abort.
+Sending 3, 100-byte ICMP Echos to 10.0.1.2, timeout is 1 seconds:
+!!!
+Success rate is 100 percent (3/3), round-trip min/avg/max = 4/4/5 ms
+ios1#
