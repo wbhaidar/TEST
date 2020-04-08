@@ -1,10 +1,10 @@
 pipeline {
-    agent none
+    agent any
 
     stages {
     
         stage('build gns3') {
-            agent {
+            step {
                 docker { image 'hello-world'}
             }
             
