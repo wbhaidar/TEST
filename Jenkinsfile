@@ -1,11 +1,15 @@
 pipeline {
-    agent any
+    agent {
+        docker {
+            image 'node:7-alpine'
+        }
+    }
 
     stages {
     
         stage('build gns3') {
-            step {
-                docker { image 'hello-world'}
+            steps {
+                sh ' node --version'
             }
             
         }
