@@ -60,11 +60,11 @@ pipeline {
          post {
             success {
                 echo 'Yay. Success' 
-                echo  ${currentBuild.fullDisplayName}
+                echo  "${currentBuild.fullDisplayName}"
              }
              failure {
                 echo 'Boohoo. We failed'
-                echo ${currentBuild.fullDisplayName}
+                echo "${currentBuild.fullDisplayName}"
             }
         }
     
