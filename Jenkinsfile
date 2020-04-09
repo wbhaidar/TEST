@@ -47,18 +47,29 @@ pipeline {
                 sh 'python3 /taf/scripts/4_test_changed_topology.py'
             }
         }
+
+//         stage('Cleanup') {
+//            when {
+//                expression { env.BRANCH_NAME == 'testbranch' }
+//            }        
+//            steps {
+//                sh 'ansible-playbook /taf/scripts/10_topology_teardown.yml -i /taf/etc/1_3_hosts'
+//            }
+//        }
     }
          post {
             success {
-                echo 'Yay. Success - ${currentBuild.fullDisplayName}'
+                echo 'Yay. Success' 
+                echo  ${currentBuild.fullDisplayName}
              }
              failure {
-                echo 'Boohoo. We failed - ${currentBuild.fullDisplayName}'
+                echo 'Boohoo. We failed'
+                echo ${currentBuild.fullDisplayName}
             }
         }
     
 }
-
-//                 mail to: "wal_@hotmail.com", 
+//                  You Can add the following in POST declaration
+//                 mail to: "walid.haidar@cba.com.au", 
 //                 subject:"SUCCESS: ${currentBuild.fullDisplayName}", 
 //                 body: "Yay, we passed."
