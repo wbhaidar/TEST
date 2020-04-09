@@ -1,4 +1,7 @@
 pipeline {
+     when {
+                branch '*/testbranch'
+    }
     agent {
         dockerfile {
             dir 'SDN_Test_Network_GNS3'
@@ -10,15 +13,12 @@ pipeline {
     }
 
     stages {
-//       stage('Build Topology') {
-//
-//            when {
-//                branch '*/master'
-//            }
-//           steps {
-//                sh 'ansible-playbook /taf/scripts/1_topology_setup.yml -i /taf/etc/1_3_hosts'
-//            }
-//        }
+       stage('Build Topology') {
+           
+           steps {
+                sh 'ansible-playbook /taf/scripts/1_topology_setup.yml -i /taf/etc/1_3_hosts'
+            }
+        }
         stage('Test Baseline State') {
             steps {
                 sh 'python3 /taf/scripts/2_test_baseline_topology.py'
@@ -26,7 +26,7 @@ pipeline {
         }
         stage('Deploy Proposed Config') {
             steps {
-                sh ' ansible-playbook /taf/scripts/3_topology_change_config.yml -i /gns3/etc/1_3_hosts'
+                sh ' ansible-playbook /taf/scripts/3_topology_change_config.yml -i /taf/etc/1_3_hosts'
             }
         }
         stage('Test Change') {
