@@ -14,7 +14,7 @@ pipeline {
 
     stages {
         stage ('Debug 1') {
-            stesps {
+            steps {
                 sh 'printenv'
             }
         }
