@@ -10,28 +10,43 @@ pipeline {
     }
 
     stages {
-        stage ('intiial') {
-            steps {
-                sh 'whoami'
+        stage('Build Topology') {
+/*
+            when {
+                branch '*/master'
             }
-        }
-        stage ('initial2') {
-            steps {
-                sh ' ls -al /'
-            }
-        }
-        stage('build gns3') {
+*/
+
             steps {
                 sh 'ansible-playbook /taf/scripts/1_topology_setup.yml -i /taf/etc/1_3_hosts'
             }
         }
-    }
-        post {
-            success {
-                echo 'Success'
+        stage('Test Baseline State') {
+            steps {
+                sh 'python3 /taf/scripts/2_test_baseline_topology.py'
             }
-            failure {
-                echo 'failed'
+        }
+        stage('Deploy Proposed Config') {
+            steps {
+                sh ' ansible-playbook /taf/scripts/3_topology_change_config.yml -i /gns3/etc/1_3_hosts'
+            }
+        }
+        stage('Test Change') {
+            steps {
+                sh 'python3 /taf/scripts/4_test_changed_topology.py'
+            }
+        }
+    }
+         post {
+            success {
+                 mail to: "wal_@hotmail.com", 
+                 subject:"SUCCESS: ${currentBuild.fullDisplayName}", 
+                 body: "Yay, we passed."
+             }
+             failure {
+                 mail to: "wal_@hotmail.com", 
+                 subject:"FAILURE: ${currentBuild.fullDisplayName}", 
+                 body: "Boo, we failed."
             }
         }
     
