@@ -53,20 +53,21 @@ pipeline {
          post {
             success {
                 echo 'Yay. Success - ${currentBuild.fullDisplayName}'
-/*
-                 mail to: "wal_@hotmail.com", 
-                 subject:"SUCCESS: ${currentBuild.fullDisplayName}", 
-                 body: "Yay, we passed."
-*/
              }
              failure {
                 echo 'Boohoo. We failed - ${currentBuild.fullDisplayName}'
-/*
-                 mail to: "wal_@hotmail.com", 
-                 subject:"FAILURE: ${currentBuild.fullDisplayName}", 
-                 body: "Boo, we failed."
-*/
             }
         }
     
 }
+        }
+        
+
+
+        /*
+                 mail to: "wal_@hotmail.com", 
+                 subject:"SUCCESS: ${currentBuild.fullDisplayName}", 
+                 body: "Yay, we passed."
+
+
+        */
