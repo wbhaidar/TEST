@@ -60,14 +60,7 @@ pipeline {
         }
     
 }
-        }
-        
 
-
-        /*
-                 mail to: "wal_@hotmail.com", 
-                 subject:"SUCCESS: ${currentBuild.fullDisplayName}", 
-                 body: "Yay, we passed."
-
-
-        */
+//                 mail to: "wal_@hotmail.com", 
+//                 subject:"SUCCESS: ${currentBuild.fullDisplayName}", 
+//                 body: "Yay, we passed."
