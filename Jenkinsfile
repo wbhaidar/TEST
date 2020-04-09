@@ -10,17 +10,15 @@ pipeline {
     }
 
     stages {
-        stage('Build Topology') {
-/*
-            when {
-                branch '*/master'
-            }
-*/
-
-            steps {
-                sh 'ansible-playbook /taf/scripts/1_topology_setup.yml -i /taf/etc/1_3_hosts'
-            }
-        }
+//       stage('Build Topology') {
+//
+//            when {
+//                branch '*/master'
+//            }
+//           steps {
+//                sh 'ansible-playbook /taf/scripts/1_topology_setup.yml -i /taf/etc/1_3_hosts'
+//            }
+//        }
         stage('Test Baseline State') {
             steps {
                 sh 'python3 /taf/scripts/2_test_baseline_topology.py'
