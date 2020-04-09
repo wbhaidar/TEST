@@ -25,6 +25,7 @@ pipeline {
                 sh 'ansible-playbook /taf/scripts/1_topology_setup.yml -i /taf/etc/1_3_hosts'
             }
         }
+    }
         post {
             success {
                 echo 'Success'
@@ -33,5 +34,5 @@ pipeline {
                 echo 'failed'
             }
         }
-    }
+    
 }
