@@ -1,0 +1,55 @@
+#### GNS3 Server settings
+gns3_url: "http://192.168.56.102"
+gns3_project_name: gns3_ansible2
+gns3_lab_user: admin
+gns3_lab_pass: admin
+#gns3_nodes_strategy: all
+gns3_nodes_strategy: one_by_one
+gns3_pause_delay: 4
+
+### Nodes attributes and specifications
+gns3_nodes_spec:
+        - name: ios1
+          template: "Cisco IOSv 15.7(3)M3"
+          x: -90
+          y: 0
+          console: 5010
+        - name: ios2
+          template: "Cisco IOSv 15.7(3)M3"
+          x: 90
+          y: 0
+          console: 5011
+#        - name: ios3
+#          template: "Cisco IOSv 15.7(3)M3"
+#          x: 180
+#          y: 0
+#          console: 5012
+        - name: sw1
+          template: "Ethernet switch"
+          x: 0
+          y: 90
+        - name: cloud1
+          template: "Cloud"
+          x: 0
+          y: 180
+
+
+### Links mapping
+gns3_links_spec:
+        - ["ios1", "Gi0/0", "ios2", "Gi0/0"]
+        - ["ios2", "Gi0/1", "ios1", "Gi0/1"]
+        - ["sw1", "Ethernet0", "ios1", "Gi0/3"]
+        - ["sw1", "Ethernet1", "ios2", "Gi0/3"]
+        - ["sw1", "Ethernet2", "cloud1", "eth0"]
+#        - ["sw1", "Ethernet2", "ios3", "Gi0/3"]
+
+
+        
+### Boilerplate configuration settings
+boilerplate:
+    # `generate` or `deploy` the configuration
+    config: "deploy"
+    # Flag used when config is set to `deploy`. When `no` it will prompt the user for
+    # confirmation, when set to `yes` it will wait the minuites set in `automated_push_delay`
+    automated_push: "yes"
+    automated_push_delay: 6
