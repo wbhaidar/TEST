@@ -28,7 +28,7 @@ pipeline {
         }
         stage('Test Baseline State') {
             when {
-                expression { env.BRANCH_NAME == 'master' }
+                expression { env.BRANCH_NAME == 'testbranch' }
             }
             steps {
                 sh 'python3 /taf/scripts/2_test_baseline_topology.py'
