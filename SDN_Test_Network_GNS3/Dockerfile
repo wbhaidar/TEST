@@ -12,7 +12,7 @@ RUN apt-get update \
  && apt-get clean \
  && rm -rf /var/lib/apt/lists/*
 
-COPY taf /taf
+#COPY taf /taf
 ENV ANSIBLE_HOST_KEY_CHECKING false
 
 CMD ["/bin/sh"]

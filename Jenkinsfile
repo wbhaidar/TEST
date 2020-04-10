@@ -8,7 +8,7 @@ pipeline {
         }
     }
     options {
-          ansiColor('xterm')
+          ansiColor('xterm')q
     }
 
     stages {
@@ -30,7 +30,7 @@ pipeline {
         }
         stage('Test Baseline State') {
             when {
-                expression { env.BRANCH_NAME == 'testbranch' }
+                expression { env.BRANCH_NAME == 'master' }
             }
             steps {
                 sh 'python3 /taf/scripts/2_test_baseline_topology.py'
