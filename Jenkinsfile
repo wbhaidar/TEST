@@ -2,9 +2,7 @@ pipeline {
     agent {
         dockerfile {
             dir 'SDN_Test_Network_GNS3'
-            args '-u root:root'
-            args '-v taf:/taf'
-            
+            args '-u root:root -v taf:/taf'           
         }
     }
     options {
