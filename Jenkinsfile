@@ -3,6 +3,8 @@ pipeline {
         dockerfile {
             dir 'SDN_Test_Network_GNS3'
             args '-u root:root'
+            args '-v env.WORKSPACE+"/taf":/taf'
+            
         }
     }
     options {
@@ -15,14 +17,17 @@ pipeline {
                 sh 'printenv'
             }
         }
-//       stage('Build Topology') {   
-//                when {
-//                expression { env.BRANCH_NAME == 'testbranch' }
-//            }
-//           steps {
-//                sh 'ansible-playbook /taf/scripts/1_topology_setup.yml -i /taf/etc/1_3_hosts'
-//            }
-//        }
+       stage('Build Topology') {   
+                when { 
+                    anyOf {
+                        expression { env.BRANCH_NAME == 'testbranch' }
+                        expression { env.BRANCH_NAME == 'createtopology'}
+                    }
+            }
+           steps {
+                sh 'ansible-playbook /taf/scripts/1_topology_setup.yml -i /taf/etc/1_3_hosts'
+            }
+        }
         stage('Test Baseline State') {
             when {
                 expression { env.BRANCH_NAME == 'testbranch' }
@@ -48,23 +53,21 @@ pipeline {
             }
         }
 
-//         stage('Cleanup') {
-//            when {
-//                expression { env.BRANCH_NAME == 'testbranch' }
-//            }        
-//            steps {
-//                sh 'ansible-playbook /taf/scripts/10_topology_teardown.yml -i /taf/etc/1_3_hosts'
-//            }
-//        }
+         stage('Cleanup') {
+            when {
+                expression { env.BRANCH_NAME == 'cleanup' }
+            }        
+            steps {
+                sh 'ansible-playbook /taf/scripts/10_topology_teardown.yml -i /taf/etc/1_3_hosts'
+            }
+        }
     }
          post {
             success {
-                echo 'Yay. Success' 
-                echo  "${currentBuild.fullDisplayName}"
+                echo 'Yay. Success'
              }
              failure {
                 echo 'Boohoo. We failed'
-                echo "${currentBuild.fullDisplayName}"
             }
         }
     
