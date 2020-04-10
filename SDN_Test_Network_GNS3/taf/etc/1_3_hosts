@@ -1,0 +1,13 @@
+[network]
+ios1  ansible_host=192.168.56.111 mgmt_ip=192.168.56.111/24  mgmt_interface=Gi0/3  data_lo0=lo0 data_lo0_ip=1.1.1.1/32 data_int0=Gi0/0 data_int1=Gi0/1 data_ip0=10.0.0.1/24 data_ip1=10.0.1.1/24 ansible_net_os="ios" image_style="iosv_l3"
+ios2  ansible_host=192.168.56.112 mgmt_ip=192.168.56.112/24  mgmt_interface=Gi0/3  data_lo0=lo0 data_lo0_ip=2.2.2.2/32 data_int0=Gi0/0 data_int1=Gi0/1 data_ip0=10.0.0.2/24 data_ip1=10.0.1.2/24 ansible_net_os="ios" image_style="iosv_l3"
+
+[network:vars]
+ansible_network_os=ios
+ansible_user=admin
+ansible_password=admin
+ansible_connection=network_cli
+ansible_become=yes
+absible_become_method=enable
+ansible_become_password=admin
+ansible_command_timeout=60
